@@ -5,11 +5,11 @@ import Link from "next/link";
 
 export default function Home() {
   const subjects = [
-    { icon: <BookOpen />, name: "English", color: "from-pink-500 to-rose-500" },
-    { icon: <Brain />, name: "Math", color: "from-blue-500 to-indigo-500" },
-    { icon: <FlaskRound />, name: "Science", color: "from-green-500 to-emerald-500" },
-    { icon: <Languages />, name: "Hindi", color: "from-yellow-500 to-amber-500" },
-    { icon: <Code />, name: "Coding", color: "from-purple-500 to-fuchsia-500" },
+    { icon: <BookOpen />, name: "English", color: "from-pink-500 to-rose-500", link: "/subjects/english" },
+    { icon: <Brain />, name: "Math", color: "from-blue-500 to-indigo-500", link: "/subjects/math" },
+    { icon: <FlaskRound />, name: "Science", color: "from-green-500 to-emerald-500", link: "/subjects/science" },
+    { icon: <Languages />, name: "Hindi", color: "from-yellow-500 to-amber-500", link: "/subjects/hindi" },
+    { icon: <Code />, name: "Coding", color: "from-purple-500 to-fuchsia-500", link: "/subjects/coding" },
   ];
 
   return (
@@ -44,14 +44,15 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {subjects.map((subject, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className={`p-6 rounded-2xl text-white shadow-lg bg-gradient-to-r ${subject.color} flex flex-col items-center gap-3`}
-            >
-              <div className="text-3xl">{subject.icon}</div>
-              <h3 className="text-lg font-semibold">{subject.name}</h3>
-            </motion.div>
+            <Link key={index} href={subject.link}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className={`p-6 rounded-2xl text-white shadow-lg bg-gradient-to-r ${subject.color} flex flex-col items-center gap-3 cursor-pointer`}
+              >
+                <div className="text-3xl">{subject.icon}</div>
+                <h3 className="text-lg font-semibold">{subject.name}</h3>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>

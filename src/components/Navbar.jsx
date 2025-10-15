@@ -1,7 +1,7 @@
 "use client";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 
 export default function Navbar() {
   const navLinks = [
@@ -18,9 +18,14 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white backdrop-blur-lg shadow-lg z-50 transition-all">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-4">
-        <motion.h1 whileHover={{ scale: 1.07 }} className="text-2xl font-bold text-indigo-600 tracking-tight">
-          BDSJ Teaching’s
-        </motion.h1>
+        <Link href="/">
+          <motion.h1
+            whileHover={{ scale: 1.07 }}
+            className="text-2xl font-bold text-indigo-600 tracking-tight cursor-pointer"
+          >
+            BDSJ Teaching’s
+          </motion.h1>
+        </Link>
         <ul className="flex gap-5 text-sm font-semibold">
           {navLinks.map((link) => (
             <motion.li
