@@ -11,8 +11,11 @@ export default function Navbar() {
     { href: "/grades", label: "Grades" },
     { href: "/book-demo", label: "Book Demo" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    
+    // 👇 Changed this line — contact now redirects to book-demo
+    { href: "/book-demo", label: "Contact" },
   ];
+
   const pathname = usePathname();
 
   return (
@@ -29,9 +32,13 @@ export default function Navbar() {
         <ul className="flex gap-5 text-sm font-semibold">
           {navLinks.map((link) => (
             <motion.li
-              key={link.href}
+              key={link.href + link.label}
               whileHover={{ scale: 1.18 }}
-              className={`${pathname === link.href ? 'text-indigo-500 underline' : 'text-gray-800'} transition`}
+              className={`${
+                pathname === link.href
+                  ? "text-indigo-500 underline"
+                  : "text-gray-800"
+              } transition`}
             >
               <Link href={link.href}>{link.label}</Link>
             </motion.li>
