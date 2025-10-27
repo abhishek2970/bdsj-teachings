@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata = {
   title: "BDSJ Teaching’s",
@@ -18,9 +19,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
         <Navbar />
+        <Breadcrumb />
         <div className="flex flex-1">
           <Sidebar />
-          <main className="flex-1 p-6">{children}</main>
+         
+          <main className="flex-1 p-6">
+          <Breadcrumb />
+            {children}
+          </main>
         </div>
         <Footer />
       </body>
